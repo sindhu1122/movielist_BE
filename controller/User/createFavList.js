@@ -1,6 +1,6 @@
 var jwt = require('jsonwebtoken')
 const models=require('../../models')
-const CreateWatchlist = async (req, res, next) => {
+const createFavList = async (req, res, next) => {
     try {
         const token = req.headers['access-token']
         const payload = jwt.decode(token)
@@ -17,7 +17,7 @@ const CreateWatchlist = async (req, res, next) => {
        const obj={
             userId:user.id,
             movieId:movie.id,
-            listType:"watch"
+            listType:"fav"
         }
         console.log(obj)
         const list=await models.Userlist.create(obj)
@@ -32,4 +32,4 @@ const CreateWatchlist = async (req, res, next) => {
             })
     };
 }
-module.exports=CreateWatchlist
+module.exports=createFavList

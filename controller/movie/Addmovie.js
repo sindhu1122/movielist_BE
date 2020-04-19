@@ -17,16 +17,17 @@ const createMovie = async (req, res, next) => {
         //     }
         // })
         //console.log(moviedetails)
-    
+        k=req.body.actor
+         for(i=0;i<k.length;i++){
         const actordetails=await models.Person.findOne({
             where:{
-                name:req.body.actor
+                name:k[i]
             }
         })
         if(!actordetails)
         {
         const person={
-            name:req.body.actor,
+            name:k[i],
             // roleId:1,
             // movieId:moviedetails.id
         }
@@ -41,17 +42,19 @@ const createMovie = async (req, res, next) => {
             moviePersonId:moviepersona.id
         }
         const moviepersonroleactor=await models.MoviePersonRole.create(moviepersonroledata)
-       
     }
+    }
+    m=req.body.actress
+    for(i=0;i<m.length;i++){
     const actressdetails=await models.Person.findOne({
         where:{
-            name:req.body.actress
+            name:m[i]
         }
     })
     if(!actressdetails)
     {
     const person={
-        name:req.body.actress,
+        name:m[i],
         // roleId:1,
         // movieId:moviedetails.id
     }
@@ -66,7 +69,7 @@ const createMovie = async (req, res, next) => {
         moviePersonId:moviepersonact.id
     }
     const moviepersonroleactress=await models.MoviePersonRole.create(moviepersonroledata)
-   
+}
 }
 const directordetails=await models.Person.findOne({
     where:{
