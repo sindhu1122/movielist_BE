@@ -1,12 +1,12 @@
 var jwt = require('jsonwebtoken')
 const models = require('../../models')
-/** @description In this function user can add movie to Favourite List
+/** @description In this function user can add movie to Watch List
  * @param {object} req - Request object is null
  * @param {object} res -  Reponse object with success message if success or error message if there is an error.
  * @param {requestCallback} next - The callback that calls the error handling middleware.
  *  @returns {Promise}
 */
-const createFavList = async (req, res, next) => {
+const createWatchlist = async (req, res, next) => {
     try {
         const token = req.headers['access-token']
         const payload = jwt.decode(token)
@@ -23,7 +23,7 @@ const createFavList = async (req, res, next) => {
         const obj = {
             userId: user.id,
             movieId: movie.id,
-            listType: "fav"
+            listType: "watch"
         }
         console.log(obj)
         const list = await models.Userlist.create(obj)
@@ -36,7 +36,7 @@ const createFavList = async (req, res, next) => {
         res.status(400).json({
             error
         })
-        next(error)
+        next(erro)
     };
 }
-module.exports = createFavList
+module.exports = createWatchlist
