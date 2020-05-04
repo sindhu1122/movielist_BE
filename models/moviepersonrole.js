@@ -6,10 +6,9 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   MoviePersonRole.associate = function(models) {
     // associations can be defined here
-    MoviePersonRole.belongsTo(models.MoviePerson,{foreignKey:"moviePersonId"})
+   
     models.MoviePerson.hasMany(MoviePersonRole,{foreignKey:"moviePersonId"})
-    MoviePersonRole.belongsTo(models.Role,{foreignKey:"roleId"})
-    models.Role.hasMany(MoviePersonRole,{foreignKey:"roleId"})
+   
   };
   return MoviePersonRole;
 };

@@ -104,7 +104,7 @@
     
 
     
-    <h4 class="name" id="movieFilter"><span class="type-signature">(async) </span>movieFilter<span class="signature">(req, res, next)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
+    <h4 class="name" id="addPerson"><span class="type-signature">(async) </span>addPerson<span class="signature">(req, res)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
     
 
     
@@ -112,7 +112,7 @@
 
 
 <div class="description">
-    This functions filter the movies based on the actors,actress,rating,year,director and producer
+    Adding movie persons like actor,actress,director,producer.If the person name already exists then it updated the changes
 </div>
 
 
@@ -164,7 +164,7 @@
 
             
 
-            <td class="description last">Request object with queryParams with actors,actress,rating,year,director,producer</td>
+            <td class="description last">Request object with name and age</td>
         </tr>
 
     
@@ -187,30 +187,7 @@
 
             
 
-            <td class="description last">Reponse object with filtered movies list if success or error message if there is an error.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>next</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">requestCallback</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The callback that calls the error handling middleware.</td>
+            <td class="description last">Returns Reponse object with details of the newly created person, otherwise it updates the existing user details</td>
         </tr>
 
     
@@ -251,7 +228,363 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="movieFilter.js.html">movieFilter.js</a>, <a href="movieFilter.js.html#line8">line 8</a>
+        <a href="addPerson.js.html">addPerson.js</a>, <a href="addPerson.js.html#line9">line 9</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="deletePerson"><span class="type-signature">(async) </span>deletePerson<span class="signature">(req, res)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    This functions deletes the persons included in the movie
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>req</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Request object with person name</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>res</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Reponse object with success message  if success or error message if there is an error.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="deletePerson.js.html">deletePerson.js</a>, <a href="deletePerson.js.html#line8">line 8</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="editPerson"><span class="type-signature">(async) </span>editPerson<span class="signature">(req, res)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    This functions edit the details of the person like actor,actress,director,producer
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>req</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Request object with person name to be edited and new name and age</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>res</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Reponse object with success message  if success or error message if there is an error.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="editPerson.js.html">editPerson.js</a>, <a href="editPerson.js.html#line9">line 9</a>
     </li></ul></dd>
     
 
@@ -315,13 +648,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#movieFilter">movieFilter</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addPerson">addPerson</a></li><li><a href="global.html#deletePerson">deletePerson</a></li><li><a href="global.html#editPerson">editPerson</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Sat May 02 2020 11:30:19 GMT+0530 (India Standard Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Tue May 05 2020 01:29:55 GMT+0530 (India Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>

@@ -1,11 +1,10 @@
 var jwt = require('jsonwebtoken')
 const models = require('../../models')
-const {successResponse,errorResponse}=require('../response/response')
-const logger=require('../logger/logger')
+const { successResponse, errorResponse } = require('../response/response')
+const logger = require('../logger/logger')
 /** @description In this function user can add movie to Favourite List
  * @param {object} req - Request object is null
  * @param {object} res -  Reponse object with success message if success or error message if there is an error.
- * @param {requestCallback} next - The callback that calls the error handling middleware.
  *  @returns {Promise}
 */
 const createFavList = async (req, res, next) => {
@@ -26,15 +25,15 @@ const createFavList = async (req, res, next) => {
             listType: 'fav'
         }
         const list = await models.Userlist.create(obj)
-        result=successResponse(res)
+        result = successResponse(res)
         result
     }
 
     catch (error) {
-        result=errorResponse(error,res)
+        result = errorResponse(error, res)
         result
         logger.error('Unable to add to favourite list')
-        next(error)
+
     };
 }
 module.exports = createFavList

@@ -1,9 +1,8 @@
 const models = require('../../models');
-const {successResponse,errorResponse}=require('../response/response')
+const { successResponse, errorResponse } = require('../response/response')
 /** @description This function adds the Movie to the database 
  * @param {object} req - Request object with movieName,actor,actress,director,producer,releaseYear,rating,imgUrl
  * @param {object} res -  Reponse object with success message if success or error message if there is an error.
- * @param {requestCallback} next - The callback that calls the error handling middleware.
  *  @returns {Promise}
 */
 const addMovie = async (req, res, next) => {
@@ -28,8 +27,6 @@ const addMovie = async (req, res, next) => {
             if (!actordetails) {
                 const person = {
                     name: actorArray[key],
-                    // roleId:1,
-                    // movieId:moviedetails.id
                 }
                 const actor = await models.Person.create(person)
                 const movieperson = {
@@ -100,7 +97,7 @@ const addMovie = async (req, res, next) => {
         if (!directordetails) {
             const person = {
                 name: req.body.director,
-                
+
             }
             const director = await models.Person.create(person)
             const movieperson = {
@@ -135,7 +132,7 @@ const addMovie = async (req, res, next) => {
         if (!producerdetails) {
             const person = {
                 name: req.body.producer,
-               
+
             }
             const producer = await models.Person.create(person)
             const movieperson = {
@@ -162,15 +159,15 @@ const addMovie = async (req, res, next) => {
             }
             const moviepersonroleactor = await models.MoviePersonRole.create(moviepersonroledata)
         }
-        result=successResponse(res)
+        result = successResponse(res)
         result
         logger.info("Movie added successfully")
-       
+
     }
     catch (error) {
-       result=errorResponse(error,res)
-       result
-       logger.error("Error! Unable to add movies")
+        result = errorResponse(error, res)
+        result
+        logger.error("Error! Unable to add movies")
         next(error)
     }
 }

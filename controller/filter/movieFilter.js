@@ -1,11 +1,11 @@
 const models = require('../../models');
-const logger=require('../logger/logger')
-const {successResponse,errorResponse}=require('../response/response')
+const logger = require('../logger/logger')
+const { successResponse, errorResponse } = require('../response/response')
 /** @description This functions filter the movies based on the actors,actress,rating,year,director and producer
  * @param {object} req - Request object with queryParams with actors,actress,rating,year,director,producer
  * @param {object} res -  Reponse object with filtered movies list if success or error message if there is an error.
  * @param {requestCallback} next - The callback that calls the error handling middleware.
- *  @returns {Promise}
+ *  @returns -List of Filtered Movies
 */
 async function movieFilter(req, res, next) {
     try {
@@ -59,14 +59,14 @@ async function movieFilter(req, res, next) {
 
             })
         }
-    
-       result=successResponse(res,movie)
-       result
-       logger.info("movies based on filters are displayed")
-       
+
+        result = successResponse(res, movie)
+        result
+        logger.info("movies based on filters are displayed")
+
     }
     catch (error) {
-        result=errorResponse(error,res)
+        result = errorResponse(error, res)
         result
         logger.error("Cannot load movies")
         next(error)
