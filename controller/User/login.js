@@ -1,11 +1,10 @@
 const models = require('../../models');
-const logger=require('../logger/logger')
-const jwt = require('jsonwebtoken');
+const logger = require('../logger/logger')
 /** @description This functions unables the user to login
  * @param {object} req - Request object with userName,password
  * @param {object} res -  Reponse object with all details of logged in user along with token if success or error message if there is an error.
  * @param {requestCallback} next - The callback that calls the error handling middleware.
- *  @returns {Promise}
+ *  @returns Logged in user details
 */
 const login = async (req, res, next) => {
 

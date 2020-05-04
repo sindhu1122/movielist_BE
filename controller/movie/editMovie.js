@@ -1,10 +1,9 @@
 const models = require('../../models');
-const logger=require('../logger/logger')
-const {successResponse,errorResponse}=require('../response/response')
+const logger = require('../logger/logger')
+const { successResponse, errorResponse } = require('../response/response')
 /** @description This functions edit the details of the movie like actor,actress,director,producer
  * @param {object} req - Request object with movieName and new attributes that are to be edited 
  * @param {object} res -  Reponse object with success message  if success or error message if there is an error.
- * @param {requestCallback} next - The callback that calls the error handling middleware.
  *  @returns {Promise}
 */
 const editMovie = async (req, res, next) => {
@@ -73,15 +72,15 @@ const editMovie = async (req, res, next) => {
             }
             result.push(moviepersonrole)
         }
-        response=successResponse(res)
+        response = successResponse(res)
         response
         logger.info('Person details edited successfully')
     }
 
     catch (error) {
-       response=errorResponse(error,res)
-       response
-       logger.error('Cannot edit details successfully')
+        response = errorResponse(error, res)
+        response
+        logger.error('Cannot edit details successfully')
         next(error)
     }
 }

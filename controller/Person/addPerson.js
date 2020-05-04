@@ -1,10 +1,9 @@
 const models = require('../../models');
-const logger=require('../logger/logger')
-const {successResponse,errorResponse}=require('../response/response')
+const logger = require('../logger/logger')
+const { successResponse, errorResponse } = require('../response/response')
 /** @description Adding movie persons like actor,actress,director,producer.If the person name already exists then it updated the changes
  * @param {object} req - Request object with name and age
  * @param {object} res -  Returns Reponse object with details of the newly created person, otherwise it updates the existing user details
- * @param {requestCallback} next - The callback that calls the error handling middleware.
  *  @returns {Promise}
 */
 const addPerson = async (req, res, next) => {
@@ -27,7 +26,7 @@ const addPerson = async (req, res, next) => {
                 }
 
             })
-           
+
         }
         else {
             n = {
@@ -45,17 +44,17 @@ const addPerson = async (req, res, next) => {
 
             }
             const moviepersonrole = await models.MoviePersonRole.create(obj)
-            result=successResponse(res)
+            result = successResponse(res)
             result
             logger.info('person added successfully')
         }
 
     }
     catch (error) {
-       result=errorResponse(error,res)
-       result
-       logger.error('Cannot add person')
-        next(error)
+        result = errorResponse(error, res)
+        result
+        logger.error('Cannot add person')
+
     }
 }
 module.exports = addPerson

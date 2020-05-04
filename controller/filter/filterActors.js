@@ -1,15 +1,15 @@
 const models = require('../../models');
-const logger=require('../logger/logger')
-const {successResponse,errorResponse}=require('../response/response')
+const logger = require('../logger/logger')
+const { successResponse, errorResponse } = require('../response/response')
 /** @description This functions filter the actors based on the age and movies they acted
  * @param {object} req - Request object with queryParams with age,movie name
  * @param {object} res -  Reponse object with filtered persons list if success or error message if there is an error.
  * @param {requestCallback} next - The callback that calls the error handling middleware.
- *  @returns {Promise}
+ *  @returns -list of Filtered Actors
 */
 const listFilter = async (req, res, next) => {
     try {
-        person=[]
+        person = []
         if (req.query.movieName) {
             const moviedetails = await models.Movie.findOne({
                 where: {
@@ -21,10 +21,10 @@ const listFilter = async (req, res, next) => {
                     movieId: moviedetails.id
                 }
             })
-        
+
             obj = [...JSON.parse(JSON.stringify(movieperson, null, 4))];
-        
-           await obj.map(async(item,key)=> {
+
+            await obj.map(async (item, key) => {
                 const moviepersonrole = await models.MoviePersonRole.findOne({
                     where: {
                         moviePersonId: obj[key].id,
@@ -71,14 +71,14 @@ const listFilter = async (req, res, next) => {
             })
 
         }
-        
-        let result=successResponse(res,person)
+
+        let result = successResponse(res, person)
         result
         logger.info("Filtered list are displayed")
-    
+
     }
     catch (error) {
-        result=errorResponse(error,res)
+        result = errorResponse(error, res)
         result
         logger.error("Cannot get filtered list")
         next(error)

@@ -9,9 +9,7 @@ module.exports = (sequelize, DataTypes) => {
     // associations can be defined here
     MoviePerson.hasMany(models.MoviePersonRole,{foreignKey:"moviePersonId"})
     MoviePerson.belongsTo(models.Person,{foreignKey:"personId"})
-    models.Person.hasMany(MoviePerson,{foreignKey:"personId"})
     MoviePerson.belongsTo(models.Movie,{foreignKey:"movieId"})
-    models.Movie.hasMany(MoviePerson,{foreignKey:"movieId"})
   };
   return MoviePerson;
 };

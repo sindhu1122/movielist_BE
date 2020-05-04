@@ -1,11 +1,10 @@
 const models = require('../../models');
-const logger=require('../logger/logger')
-const {successResponse,errorResponse}=require('../response/response')
+const logger = require('../logger/logger')
+const { successResponse, errorResponse } = require('../response/response')
 /** @description This functions gives list of all movies present in the database
  * @param {object} req - Request object with the movieName
  * @param {object} res -  Reponse object with movie details if success or error message if there is an error.
- * @param {requestCallback} next - The callback that calls the error handling middleware.
- *  @returns {Promise}
+ *  @returns -Returns details of searched movie
 */
 const getMovie = async (req, res, next) => {
     try {
@@ -27,8 +26,7 @@ const getMovie = async (req, res, next) => {
             }]
 
         })
-        if (movie)
-        {
+        if (movie) {
             res.status(200).json({
                 success: true,
                 movieFound: true,
@@ -44,10 +42,10 @@ const getMovie = async (req, res, next) => {
             logger.info('Movie not found')
 
         }
-       
+
     }
     catch (error) {
-        errorResponse(error,res)
+        errorResponse(error, res)
         logger.error('Error in fetching the movie detail')
     }
 }

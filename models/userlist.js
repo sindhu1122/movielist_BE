@@ -7,6 +7,12 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Userlist.associate = function(models) {
     // associations can be defined here
+   
+    Userlist.hasMany(models.Movie,{foreignKey:"id",sourceKey:"movieId"})
+
+   Userlist.belongsTo(models.User,{foreignKey:"userId"})
+    
+     
   };
   return Userlist;
 };

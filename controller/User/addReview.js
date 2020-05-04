@@ -1,10 +1,9 @@
 const models = require('../../models');
-const {successResponse,errorResponse}=require('../response/response')
-const logger=require('../logger/logger')
+const { successResponse, errorResponse } = require('../response/response')
+const logger = require('../logger/logger')
 /** @description  In This function  user can add review to the movie
  * @param {object} req - Request object with review
  * @param {object} res -  Reponse object with success message if success or error message if there is an error.
- * @param {requestCallback} next - The callback that calls the error handling middleware.
  *  @returns {Promise}
 */
 async function addReview(req, res, next) {
@@ -20,15 +19,14 @@ async function addReview(req, res, next) {
             }
         })
 
-        result=successResponse(res)
+        result = successResponse(res)
         result
         logger.info('Review added successfully')
-        
+
     }
     catch (error) {
         errorResponse(error)
         logger.error('Unable to add review')
-        next(error)
     }
 }
 module.exports = addReview;
