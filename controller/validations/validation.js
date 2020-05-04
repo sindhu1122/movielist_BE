@@ -57,6 +57,7 @@ const filterActors = async (req, res, next) => {
         next()
     }
     catch (error) {
+    
         res.status(400).json({
             success: false,
             message:_.first(error.details).message

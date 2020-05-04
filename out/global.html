@@ -104,7 +104,7 @@
     
 
     
-    <h4 class="name" id="addReview"><span class="type-signature">(async) </span>addReview<span class="signature">(req, res)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
+    <h4 class="name" id="addPerson"><span class="type-signature">(async) </span>addPerson<span class="signature">(req, res)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
     
 
     
@@ -112,7 +112,7 @@
 
 
 <div class="description">
-    In This function  user can add review to the movie
+    Adding movie persons like actor,actress,director,producer.If the person name already exists then it updated the changes
 </div>
 
 
@@ -164,7 +164,7 @@
 
             
 
-            <td class="description last">Request object with review</td>
+            <td class="description last">Request object with name and age</td>
         </tr>
 
     
@@ -187,7 +187,7 @@
 
             
 
-            <td class="description last">Reponse object with success message if success or error message if there is an error.</td>
+            <td class="description last">Returns Reponse object with details of the newly created person, otherwise it updates the existing user details</td>
         </tr>
 
     
@@ -228,7 +228,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="addReview.js.html">addReview.js</a>, <a href="addReview.js.html#line9">line 9</a>
+        <a href="addPerson.js.html">addPerson.js</a>, <a href="addPerson.js.html#line9">line 9</a>
     </li></ul></dd>
     
 
@@ -282,7 +282,7 @@
     
 
     
-    <h4 class="name" id="createFavList"><span class="type-signature">(async) </span>createFavList<span class="signature">(req, res)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
+    <h4 class="name" id="deletePerson"><span class="type-signature">(async) </span>deletePerson<span class="signature">(req, res)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
     
 
     
@@ -290,7 +290,7 @@
 
 
 <div class="description">
-    In this function user can add movie to Favourite List
+    This functions deletes the persons included in the movie
 </div>
 
 
@@ -342,7 +342,7 @@
 
             
 
-            <td class="description last">Request object is null</td>
+            <td class="description last">Request object with person name</td>
         </tr>
 
     
@@ -365,7 +365,7 @@
 
             
 
-            <td class="description last">Reponse object with success message if success or error message if there is an error.</td>
+            <td class="description last">Reponse object with success message  if success or error message if there is an error.</td>
         </tr>
 
     
@@ -406,7 +406,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="createFavList.js.html">createFavList.js</a>, <a href="createFavList.js.html#line10">line 10</a>
+        <a href="deletePerson.js.html">deletePerson.js</a>, <a href="deletePerson.js.html#line8">line 8</a>
     </li></ul></dd>
     
 
@@ -460,7 +460,7 @@
     
 
     
-    <h4 class="name" id="createUser"><span class="type-signature">(async) </span>createUser<span class="signature">(req, res)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
+    <h4 class="name" id="editPerson"><span class="type-signature">(async) </span>editPerson<span class="signature">(req, res)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
     
 
     
@@ -468,7 +468,7 @@
 
 
 <div class="description">
-    Creating the new user
+    This functions edit the details of the person like actor,actress,director,producer
 </div>
 
 
@@ -520,7 +520,7 @@
 
             
 
-            <td class="description last">Request object with userName,password,role.</td>
+            <td class="description last">Request object with person name to be edited and new name and age</td>
         </tr>
 
     
@@ -543,7 +543,7 @@
 
             
 
-            <td class="description last">Reponse object with success message if success or error message if there is an error.</td>
+            <td class="description last">Reponse object with success message  if success or error message if there is an error.</td>
         </tr>
 
     
@@ -584,7 +584,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="createUser.js.html">createUser.js</a>, <a href="createUser.js.html#line10">line 10</a>
+        <a href="editPerson.js.html">editPerson.js</a>, <a href="editPerson.js.html#line9">line 9</a>
     </li></ul></dd>
     
 
@@ -625,740 +625,6 @@
 
     </dd>
 </dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="createWatchlist"><span class="type-signature">(async) </span>createWatchlist<span class="signature">(req, res)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    In this function user can add movie to Watch List
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>req</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Request object is null</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>res</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Reponse object with success message if success or error message if there is an error.</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="createWatchlist.js.html">createWatchlist.js</a>, <a href="createWatchlist.js.html#line10">line 10</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Promise</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="getFavList"><span class="type-signature">(async) </span>getFavList<span class="signature">(req, res)</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    This functions gives list of all movies present in the favorite list
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>req</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Request object will be null</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>res</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Reponse object with all the movies list  if success or error message if there is an error.</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="getFavList.js.html">getFavList.js</a>, <a href="getFavList.js.html#line9">line 9</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    Movies present in the Favourite list are returned
-</div>
-
-
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="getWatchList"><span class="type-signature">(async) </span>getWatchList<span class="signature">(req, res, next)</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    This functions gives list of all movies present in the watchlist
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>req</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Request object will be null</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>res</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Reponse object with all the movies list  if success or error message if there is an error.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>next</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">requestCallback</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The callback that calls the error handling middleware.</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="getWatchList.js.html">getWatchList.js</a>, <a href="getWatchList.js.html#line10">line 10</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    -Movies present in the watch list are returned
-</div>
-
-
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="login"><span class="type-signature">(async) </span>login<span class="signature">(req, res, next)</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    This functions unables the user to login
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>req</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Request object with userName,password</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>res</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Reponse object with all details of logged in user along with token if success or error message if there is an error.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>next</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">requestCallback</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The callback that calls the error handling middleware.</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="login.js.html">login.js</a>, <a href="login.js.html#line9">line 9</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    Logged in user details
-</div>
-
-
 
     
 
@@ -1382,13 +648,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addReview">addReview</a></li><li><a href="global.html#createFavList">createFavList</a></li><li><a href="global.html#createUser">createUser</a></li><li><a href="global.html#createWatchlist">createWatchlist</a></li><li><a href="global.html#getFavList">getFavList</a></li><li><a href="global.html#getWatchList">getWatchList</a></li><li><a href="global.html#login">login</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addPerson">addPerson</a></li><li><a href="global.html#deletePerson">deletePerson</a></li><li><a href="global.html#editPerson">editPerson</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Mon May 04 2020 17:13:59 GMT+0530 (India Standard Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Tue May 05 2020 01:29:55 GMT+0530 (India Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>

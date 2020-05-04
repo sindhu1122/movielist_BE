@@ -27,8 +27,6 @@ const addMovie = async (req, res, next) => {
             if (!actordetails) {
                 const person = {
                     name: actorArray[key],
-                    // roleId:1,
-                    // movieId:moviedetails.id
                 }
                 const actor = await models.Person.create(person)
                 const movieperson = {
