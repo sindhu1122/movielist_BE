@@ -1,4 +1,6 @@
 const models = require('../../models');
+const logger=require('../logger/logger')
+const {successResponse,errorResponse}=require('../response/response')
 /** @description This functions edit the details of the movie like actor,actress,director,producer
  * @param {object} req - Request object with movieName and new attributes that are to be edited 
  * @param {object} res -  Reponse object with success message  if success or error message if there is an error.
@@ -38,32 +40,32 @@ const editMovie = async (req, res, next) => {
             })
 
             if (moviepersonrole.roleId == 1) {
-                o = { name: req.body.actor[0] }
-                const person = await models.Person.update(o, {
+                object = { name: req.body.actor[0] }
+                const person = await models.Person.update(object, {
                     where: {
                         id: movieperson[i].personId,
                     }
                 })
             }
             else if (moviepersonrole.roleId == 2) {
-                o = { name: req.body.actress }
-                const person = await models.Person.update(o, {
+                object = { name: req.body.actress }
+                const person = await models.Person.update(object, {
                     where: {
                         id: movieperson[i].personId,
                     }
                 })
             }
             else if (moviepersonrole.roleId == 3) {
-                o = { name: req.body.director }
-                const person = await models.Person.update(o, {
+                object = { name: req.body.director }
+                const person = await models.Person.update(object, {
                     where: {
                         id: movieperson[i].personId,
                     }
                 })
             }
             if (moviepersonrole.roleId == 4) {
-                o = { name: req.body.producer }
-                const person = await models.Person.update(o, {
+                object = { name: req.body.producer }
+                const person = await models.Person.update(object, {
                     where: {
                         id: movieperson[i].personId,
                     }
@@ -71,14 +73,15 @@ const editMovie = async (req, res, next) => {
             }
             result.push(moviepersonrole)
         }
-        res.status(200).json({ message: success })
+        response=successResponse(res)
+        response
+        logger.info('Person details edited successfully')
     }
 
     catch (error) {
-        res.status(400).json({
-            status: false,
-            error
-        })
+       response=errorResponse(error,res)
+       response
+       logger.error('Cannot edit details successfully')
         next(error)
     }
 }

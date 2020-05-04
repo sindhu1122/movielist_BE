@@ -1,4 +1,6 @@
 const models = require('../../models');
+const {successResponse,errorResponse}=require('../response/response')
+const logger=require('../logger/logger')
 /** @description  In This function  user can add review to the movie
  * @param {object} req - Request object with review
  * @param {object} res -  Reponse object with success message if success or error message if there is an error.
@@ -12,19 +14,20 @@ async function addReview(req, res, next) {
                 movieName: req.params.movieName
             }
         })
-
         const act = await models.Movie.update(req.body, {
             where: {
                 id: movie.id
             }
         })
 
-        res.status(200).json({
-            message: success
-
-        })
+        result=successResponse(res)
+        result
+        logger.info('Review added successfully')
+        
     }
     catch (error) {
+        errorResponse(error)
+        logger.error('Unable to add review')
         next(error)
     }
 }

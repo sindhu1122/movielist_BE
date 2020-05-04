@@ -1,4 +1,6 @@
 const models = require('../../models');
+const logger=require('../logger/logger')
+const {successResponse,errorResponse}=require('../response/response')
 /** @description Adding movie persons like actor,actress,director,producer.If the person name already exists then it updated the changes
  * @param {object} req - Request object with name and age
  * @param {object} res -  Returns Reponse object with details of the newly created person, otherwise it updates the existing user details
@@ -25,17 +27,13 @@ const addPerson = async (req, res, next) => {
                 }
 
             })
-            res.json({
-                success: "updated details"
-            })
+           
         }
         else {
             n = {
                 name: req.body.name,
                 age: req.body.age
             }
-
-            console.log(req.body)
             const actors = await models.Person.create(n)
             person = {
                 personId: actors.id
@@ -47,15 +45,16 @@ const addPerson = async (req, res, next) => {
 
             }
             const moviepersonrole = await models.MoviePersonRole.create(obj)
-            res.json({ actors })
+            result=successResponse(res)
+            result
+            logger.info('person added successfully')
         }
 
     }
     catch (error) {
-        res.status(400).json({
-            status: false,
-            error
-        })
+       result=errorResponse(error,res)
+       result
+       logger.error('Cannot add person')
         next(error)
     }
 }

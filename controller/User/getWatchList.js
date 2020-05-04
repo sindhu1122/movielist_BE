@@ -1,5 +1,7 @@
 const models = require('../../models');
 var jwt = require('jsonwebtoken')
+const logger=require('../logger/logger')
+const {successResponse,errorResponse}=require('../response/response')
 /** @description This functions gives list of all movies present in the watchlist
  * @param {object} req - Request object will be null
  * @param {object} res -  Reponse object with all the movies list  if success or error message if there is an error.
@@ -9,8 +11,6 @@ var jwt = require('jsonwebtoken')
 const getWatchList = async (req, res, next) => {
     try {
 
-        const token = req.headers['access-token']
-        const payload = jwt.decode(token)
         const user = await models.User.findOne({
             where: {
                 userName: req.params.userName
@@ -19,14 +19,15 @@ const getWatchList = async (req, res, next) => {
         const list = await models.Userlist.findAll({
             where: {
                 userId: user.id,
-                listType: "watch"
+                listType: 'watch'
 
             }
         })
 
-        var movieslist = []
+        let movieslist = [],
+        a=[1,2,3]
         obj = [...JSON.parse(JSON.stringify(list, null, 4))];
-        for (i = 0; i < obj.length; i++) {
+        for(i=0;i<obj.length;i++) {
             var movie = await models.Movie.findOne({
                 where: { id: obj[i].movieId },
                 include: [{
@@ -37,28 +38,23 @@ const getWatchList = async (req, res, next) => {
                         required: true
                     },
                     { model: models.MoviePersonRole }
-
-
                     ]
                 }]
 
             })
-            //    console.log(JSON.stringify(movie))
-            movieslist.push((movie))
-            console.log(movieslist)
+            
+            
+            movieslist.push(movie)
 
         }
-        res.status(200).json({
-            movieslist
-
-        })
+        result=successResponse(res,movieslist)
+        result
+        logger.info('All the movies in watch list are listed')
     }
     catch (error) {
-        res.status(404).json({
-            success: false,
-            message: "There is no list",
-            error
-        })
+        result=errorResponse(error,res)
+        result
+        logger.error('Cannot fetch watch list')
         next(error)
     }
 }

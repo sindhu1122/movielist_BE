@@ -1,4 +1,5 @@
 const models = require('../../models');
+const {successResponse,errorResponse}=require('../response/response')
 /** @description This function adds the Movie to the database 
  * @param {object} req - Request object with movieName,actor,actress,director,producer,releaseYear,rating,imgUrl
  * @param {object} res -  Reponse object with success message if success or error message if there is an error.
@@ -17,16 +18,16 @@ const addMovie = async (req, res, next) => {
         }
         const act = await models.Movie.create(movie)
 
-        k = req.body.actor
-        for (i = 0; i < k.length; i++) {
+        actorArray = req.body.actor
+        actorArray.map(async (item, key) => {
             const actordetails = await models.Person.findOne({
                 where: {
-                    name: k[i]
+                    name: actorArray[key]
                 }
             })
             if (!actordetails) {
                 const person = {
-                    name: k[i],
+                    name: actorArray[key],
                     // roleId:1,
                     // movieId:moviedetails.id
                 }
@@ -42,19 +43,29 @@ const addMovie = async (req, res, next) => {
                 }
                 const moviepersonroleactor = await models.MoviePersonRole.create(moviepersonroledata)
             }
-        }
-        m = req.body.actress
-        for (i = 0; i < m.length; i++) {
+            else {
+                const movieperson = {
+                    movieId: act.id,
+                    personId: actordetails.id
+                }
+                const moviepersona = await models.MoviePerson.create(movieperson)
+                const moviepersonroledata = {
+                    roleId: 1,
+                    moviePersonId: moviepersona.id
+                }
+                const moviepersonroleactor = await models.MoviePersonRole.create(moviepersonroledata)
+            }
+        })
+        actressArray = req.body.actress
+        actressArray.map(async (item, key) => {
             const actressdetails = await models.Person.findOne({
                 where: {
-                    name: m[i]
+                    name: actressArray[key]
                 }
             })
             if (!actressdetails) {
                 const person = {
-                    name: m[i],
-                    // roleId:1,
-                    // movieId:moviedetails.id
+                    name: actressArray[key]
                 }
                 const actress = await models.Person.create(person)
                 const movieperson = {
@@ -68,7 +79,19 @@ const addMovie = async (req, res, next) => {
                 }
                 const moviepersonroleactress = await models.MoviePersonRole.create(moviepersonroledata)
             }
-        }
+            else {
+                const movieperson = {
+                    movieId: act.id,
+                    personId: actressdetails.id
+                }
+                const moviepersonact = await models.MoviePerson.create(movieperson)
+                const moviepersonroledata = {
+                    roleId: 2,
+                    moviePersonId: moviepersonact.id
+                }
+                const moviepersonroleactor = await models.MoviePersonRole.create(moviepersonroledata)
+            }
+        })
         const directordetails = await models.Person.findOne({
             where: {
                 name: req.body.director
@@ -77,8 +100,7 @@ const addMovie = async (req, res, next) => {
         if (!directordetails) {
             const person = {
                 name: req.body.director,
-                // roleId:1,
-                // movieId:moviedetails.id
+                
             }
             const director = await models.Person.create(person)
             const movieperson = {
@@ -93,6 +115,18 @@ const addMovie = async (req, res, next) => {
             const moviepersonroledirector = await models.MoviePersonRole.create(moviepersonroledata)
 
         }
+        else {
+            const movieperson = {
+                movieId: act.id,
+                personId: directordetails.id
+            }
+            const moviepersondir = await models.MoviePerson.create(movieperson)
+            const moviepersonroledata = {
+                roleId: 3,
+                moviePersonId: moviepersondir.id
+            }
+            const moviepersonroleactor = await models.MoviePersonRole.create(moviepersonroledata)
+        }
         const producerdetails = await models.Person.findOne({
             where: {
                 name: req.body.producer
@@ -101,8 +135,7 @@ const addMovie = async (req, res, next) => {
         if (!producerdetails) {
             const person = {
                 name: req.body.producer,
-                // roleId:1,
-                // movieId:moviedetails.id
+               
             }
             const producer = await models.Person.create(person)
             const movieperson = {
@@ -115,14 +148,29 @@ const addMovie = async (req, res, next) => {
                 moviePersonId: moviepersonpro.id
             }
             const moviepersonroleproduer = await models.MoviePersonRole.create(moviepersonroledata)
-            res.status(200).json({ message: "success" })
+
         }
+        else {
+            const movieperson = {
+                movieId: act.id,
+                personId: producerdetails.id
+            }
+            const moviepersonpro = await models.MoviePerson.create(movieperson)
+            const moviepersonroledata = {
+                roleId: 4,
+                moviePersonId: moviepersonpro.id
+            }
+            const moviepersonroleactor = await models.MoviePersonRole.create(moviepersonroledata)
+        }
+        result=successResponse(res)
+        result
+        logger.info("Movie added successfully")
+       
     }
     catch (error) {
-        res.status(400).json({
-            status: false,
-            error
-        })
+       result=errorResponse(error,res)
+       result
+       logger.error("Error! Unable to add movies")
         next(error)
     }
 }

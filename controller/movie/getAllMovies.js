@@ -1,4 +1,6 @@
 const models = require('../../models');
+const {successResponse,errorResponse}=require('../response/response')
+const logger=require('../logger/logger')
 /** @description This functions gives list of all movies present in the database
  * @param {object} req - Request object will be null
  * @param {object} res -  Reponse object with all the movies list  if success or error message if there is an error.
@@ -22,17 +24,17 @@ const getMovie = async (req, res, next) => {
             }]
 
         })
-        console.log(movie[0].MoviePeople[0].Person.name)
-        res.status(200).json({
-            movie
-        })
+       
+        result=successResponse(res,movie)
+        result
+        logger.info('All the movies are displayed')
 
     }
     catch (error) {
-        res.status(400).json({
-            status: false,
-            error
-        })
+        result=errorResponse(error,res)
+        result
+        logger.error('cannot get movie list')
+        
     }
 }
 module.exports = getMovie;

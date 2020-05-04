@@ -1,0 +1,36 @@
+{"message":" All the movies are displayed","level":"info","timestamp":"2020-05-03T08:17:20.463Z"}
+{"message":"Movie deleted successfully","level":"info","timestamp":"2020-05-03T08:42:44.651Z"}
+{"message":"Movie deleted successfully","level":"info","timestamp":"2020-05-03T08:44:13.735Z"}
+{"message":"Movie deleted successfully","level":"info","timestamp":"2020-05-03T08:44:34.299Z"}
+{"message":"Movie deleted successfully","level":"info","timestamp":"2020-05-03T08:52:39.842Z"}
+{"message":"Movie deleted successfully","level":"info","timestamp":"2020-05-03T09:32:39.281Z"}
+{"message":" All the movies are displayed","level":"info","timestamp":"2020-05-03T09:33:50.204Z"}
+{"message":"ReferenceError","level":"error","timestamp":"2020-05-03T09:40:47.912Z"}
+{"message":"not deleted ","level":"error","timestamp":"2020-05-03T09:41:45.732Z"}
+{"message":"Cannot get filtered list","level":"error","timestamp":"2020-05-03T11:25:06.756Z"}
+{"message":"movies based on filters are displayed","level":"info","timestamp":"2020-05-03T11:30:51.134Z"}
+{"message":"Searched movie details are fetched","level":"info","timestamp":"2020-05-03T11:58:45.024Z"}
+{"message":"All the movies are displayed","level":"info","timestamp":"2020-05-03T12:01:15.401Z"}
+{"message":"Searched movie details are fetched","level":"info","timestamp":"2020-05-03T12:01:30.878Z"}
+{"message":"Cannot delete succssfullly ","level":"error","timestamp":"2020-05-04T03:13:29.213Z"}
+{"message":"All the movies are displayed","level":"info","timestamp":"2020-05-04T03:25:11.084Z"}
+{"message":"Movie deleted successfully","level":"info","timestamp":"2020-05-04T03:36:58.119Z"}
+{"message":"Cannot delete succssfullly ","level":"error","timestamp":"2020-05-04T03:37:31.512Z"}
+{"message":"Filtered list are displayed","level":"info","timestamp":"2020-05-04T04:43:13.828Z"}
+{"message":"Filtered list are displayed","level":"info","timestamp":"2020-05-04T04:44:08.350Z"}
+{"message":"Filtered list are displayed","level":"info","timestamp":"2020-05-04T04:46:55.196Z"}
+{"message":"Filtered list are displayed","level":"info","timestamp":"2020-05-04T04:48:27.417Z"}
+{"message":"All the movies in watch list are listed","level":"info","timestamp":"2020-05-04T04:49:47.085Z"}
+{"message":"All the movies in watch list are listed","level":"info","timestamp":"2020-05-04T04:51:13.898Z"}
+{"message":"All the movies in watch list are listed","level":"info","timestamp":"2020-05-04T04:53:04.577Z"}
+{"message":"All the movies in watch list are listed","level":"info","timestamp":"2020-05-04T04:55:14.635Z"}
+{"message":"All the movies in watch list are listed","level":"info","timestamp":"2020-05-04T05:03:33.562Z"}
+{"message":"All the movies in watch list are listed","level":"info","timestamp":"2020-05-04T05:03:56.424Z"}
+{"message":"All the movies in watch list are listed","level":"info","timestamp":"2020-05-04T05:04:23.368Z"}
+{"message":"All the movies in watch list are listed","level":"info","timestamp":"2020-05-04T05:05:33.522Z"}
+{"message":"All the movies in watch list are listed","level":"info","timestamp":"2020-05-04T05:05:55.478Z"}
+{"message":"All the movies in watch list are listed","level":"info","timestamp":"2020-05-04T05:07:25.309Z"}
+{"message":"Filtered list are displayed","level":"info","timestamp":"2020-05-04T05:28:17.844Z"}
+{"message":"Filtered list are displayed","level":"info","timestamp":"2020-05-04T05:30:05.448Z"}
+{"message":"Filtered list are displayed","level":"info","timestamp":"2020-05-04T05:30:29.628Z"}
+{"message":"All the movies in watch list are listed","level":"info","timestamp":"2020-05-04T05:31:46.040Z"}

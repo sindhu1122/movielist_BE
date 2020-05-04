@@ -1,4 +1,5 @@
 const Joi = require('joi');
+var _ = require('underscore');
 const signUpValidation = async (req, res, next) => {
     try {
         const signupDataSchema = Joi.object({
@@ -10,10 +11,9 @@ const signUpValidation = async (req, res, next) => {
         next();
     }
     catch (error) {
-        console.log(error)
         res.status(400).json({
             success: false,
-            message: error.details[0].message
+            message: _.first(error.details).message
         })
     }
 }
@@ -39,7 +39,7 @@ const filterValidation = async (req, res, next) => {
     catch (error) {
         res.status(400).json({
             success: false,
-            message: error.details[0].message
+            message:_.first(error.details).message
         })
 
     }
@@ -60,7 +60,7 @@ const filterActors = async (req, res, next) => {
         console.log(error)
         res.status(400).json({
             success: false,
-            message: error.details[0].message
+            message:_.first(error.details).message
         })
     }
 }
@@ -91,7 +91,7 @@ const addMovie = async (req, res, next) => {
     catch (error) {
         res.status(400).json({
             success: false,
-            message: error.details[0].message
+            message:_.first(error.details).message
         })
     }
 }
@@ -112,7 +112,7 @@ const editMovies = async (req, res, next) => {
     catch (error) {
         res.status(400).json({
             success: false,
-            message: error.details[0].message
+            message: _.first(error.details).message
         })
     }
 }
@@ -131,7 +131,7 @@ const addPerson = async (req, res, next) => {
     catch (error) {
         res.status(400).json({
             success: false,
-            message: error.details[0].message
+            message: _.first(error.details).message
         })
 
     }

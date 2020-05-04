@@ -1,4 +1,5 @@
 const models = require('../../models');
+const logger=require('../logger/logger')
 const jwt = require('jsonwebtoken');
 /** @description This functions unables the user to login
  * @param {object} req - Request object with userName,password
@@ -18,12 +19,14 @@ const login = async (req, res, next) => {
             success: false,
             msg: 'Authentication failed. User not found.',
         });
+        logger.info('Authentication failed. User not found.')
     }
 
     user.comparePassword(req.body.password, (err, isMatch) => {
         if (isMatch && !err) {
             var token = jwt.sign({ userName: req.body.userName }, 'nodeauthsecret');
             res.status(201).json({ success: true, token: token, user: user, msg: 'login successful' });
+            logger.info('Login successfull')
         } else {
             res.status(201).send({ msg: 'Authentication failed. Wrong password.' });
         }

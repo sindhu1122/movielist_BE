@@ -9,7 +9,7 @@ app.use(bodyParser.json()); // parse json
 const port = 8000;
 
 
-
+console.log('hii')
 app.use(cors())
 app.use('/', routes);
 

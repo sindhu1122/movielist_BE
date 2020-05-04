@@ -1,5 +1,7 @@
-var jwt = require('jsonwebtoken')
+
 const models = require('../../models')
+const {successResponse,errorResponse}=require('../response/response')
+const logger=require('../logger/logger')
 /** @description In this function user can add movie to Watch List
  * @param {object} req - Request object is null
  * @param {object} res -  Reponse object with success message if success or error message if there is an error.
@@ -8,8 +10,6 @@ const models = require('../../models')
 */
 const createWatchlist = async (req, res, next) => {
     try {
-        const token = req.headers['access-token']
-        const payload = jwt.decode(token)
         const user = await models.User.findOne({
             where: {
                 userName: req.params.userName
@@ -23,20 +23,19 @@ const createWatchlist = async (req, res, next) => {
         const obj = {
             userId: user.id,
             movieId: movie.id,
-            listType: "watch"
+            listType: 'watch'
         }
-        console.log(obj)
         const list = await models.Userlist.create(obj)
-        res.status(200).json({
-            message: "success"
-        })
+        result=successResponse(res)
+        result
+        logger.info('Movie added to watch list')
     }
 
     catch (error) {
-        res.status(400).json({
-            error
-        })
-        next(erro)
+        result=errorResponse(res)
+        result
+        logger.error('Unable to add movie to watchlist')
+        next(error)
     };
 }
 module.exports = createWatchlist

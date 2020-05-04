@@ -1,4 +1,6 @@
 const models = require('../../models');
+const {successResponse,errorResponse}=require('../response/response')
+const logger=require('../logger/logger')
 /** @description This functions edit the details of the person like actor,actress,director,producer
  * @param {object} req - Request object with person name to be edited and new name and age 
  * @param {object} res -  Reponse object with success message  if success or error message if there is an error.
@@ -21,22 +23,18 @@ const editPerson = async (req, res, next) => {
                 }
 
             })
-            res.status(200).json({
-                message: "updated successfully"
-            })
+            result=successResponse(res)
+            result
+            logger.info('Updated successfully')
         }
-        else {
-
-
-            res.status(201).json({ message: "actor is not present" })
-        }
+        else
+        logger.info('person is not present')
 
     }
     catch (error) {
-        res.status(400).json({
-            status: false,
-            error
-        })
+       result=errorResponse(res)
+       result
+       next(error)
     }
 }
 module.exports = editPerson

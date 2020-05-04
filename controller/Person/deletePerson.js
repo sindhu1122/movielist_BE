@@ -1,4 +1,5 @@
 const models = require('../../models');
+const {successResponse,errorResponse}=require('../response/response')
 /** @description This functions deletes the persons included in the movie
  * @param {object} req - Request object with person name
  * @param {object} res -  Reponse object with success message  if success or error message if there is an error.
@@ -12,11 +13,14 @@ async function deletePerson(req, res, next) {
                 name: req.params.name
             }
         })
-        res.status(200).json({
-            message: "Person Deleted"
-        })
+       result=successResponse(res)
+       result
+       logger.info('Person deleted successfully')
     }
     catch (error) {
+        result=errorResponse(error,res)
+        result
+        logger.error('Cannot delete successfully')
         next(error)
     }
 }
